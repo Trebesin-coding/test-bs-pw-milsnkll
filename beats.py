@@ -2,19 +2,25 @@ from bs4 import BeautifulSoup
 import requests
 import json
 
+
 # slozka = "data.json"
 def main():
 
     url = "https://souhrada.github.io/bsoup-exam/"
     response = requests.get(url)
-#vytvari objekt beautiful soup a potom ho rozparsuje do kodu, rozpracuje html stranky 
-    soup = BeautifulSoup(response.content, "html.parser") 
+    # vytvari objekt beautiful soup a potom ho rozparsuje do kodu, rozpracuje html stranky
+    soup = BeautifulSoup(response.content, "html.parser")
     # <--- Úkol: popiš krátce, co tohle dělá
-    spisok = soup.find_all("h2")[0], soup.find_all("h2")[1], soup.find_all("h2")[2], soup.find_all("h2")[3]
-    print(spisok)
+    spisok = (
+        soup.find_all("h2")[0],
+        soup.find_all("h2")[1],
+        soup.find_all("h2")[2],
+        soup.find_all("h2")[3],
+    )
+    print(spisok)  # proč vypisujete celé html včetně tagu a ne pouze text?
 
     # with open("data.json", "w", encoding = "uft-8") as f:
-    #     json.dump(spisok, f, indent=4)
+    #     json.dump(spisok, f, indent=4) Tohle je správně
     # print("pobeda")
     # json.load(path)
 
